@@ -1,6 +1,10 @@
 import { main } from "../../app/styles/theme.styled";
 import { Game } from "../types/game.types";
 
+export const getGameById = (games: Game[], id: number) => {
+    return games.find((game: Game) => game.board_id.toString() === id.toString());
+};
+
 export const getMyGames = (games: Game[], wallet_address: string) => {
     return games.filter((game: Game) => (
         game.player1 === wallet_address || game.player2 === wallet_address
@@ -72,4 +76,8 @@ export const getGameStatusColor = (game: Game, wallet_address: string) => {
         default:
             return "black";
     }
+}
+
+export const getBoardCellStatus = (x: number, y: number, game?: Game) => {
+    return game?.board[y].cells[x];
 }

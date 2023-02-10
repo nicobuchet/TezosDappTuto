@@ -7,6 +7,7 @@ export const GridWrapper = styled.div`
 export const Cell = styled.div<{
     active?: boolean;
     player?: 1 | 2;
+    hover?: 1 | 2;
 }>`
     width: 100px;
     height: 100px;
@@ -18,7 +19,7 @@ export const Cell = styled.div<{
     cursor: pointer;
 
     &:hover {
-        background-color: ${(props) => props.player === 1 ? props.theme.colors.primary : props.theme.colors.secondary};
+        background-color: ${(props) => props.hover === 1 ? props.theme.colors.primary : props.theme.colors.secondary};
     }
 `;
 
