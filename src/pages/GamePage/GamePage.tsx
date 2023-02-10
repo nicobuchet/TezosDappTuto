@@ -24,7 +24,7 @@ const GamePage = () => {
                 <VSLabel>VS</VSLabel>
                 <PlayerLabel>tz1....</PlayerLabel>
             </PlayersWrapper>
-            <Grid />
+            <Grid game_id={Number(id)}/>
             <StatusLabel color={main.colors.primary}>YOU WON</StatusLabel>
         </GamePageWrapper>
     )
