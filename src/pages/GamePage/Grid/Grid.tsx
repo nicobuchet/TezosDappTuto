@@ -21,7 +21,7 @@ const Grid: FC<GridProps> = ({ game_id }) => {
                                     key={i}
                                     onClick={() => (
                                         toast.promise(
-                                            () => play(i, j,game_id),
+                                            () => play(i + 1, j + 1, game_id),
                                             {
                                                 pending: 'Playing...',
                                                 success: 'Played!',
