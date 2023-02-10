@@ -27,10 +27,12 @@ export const WalletBalanceLabel = styled.div`
     font-weight: 600;
 `;
 
-export const ConnectButton = styled.button`
+export const ConnectButton = styled.button<{
+    isConnected: boolean;
+}>`
     padding: 0.8rem 2rem;
     border: none;
-    background-color: ${(props) => props.theme.colors.primary};
+    background-color: ${(props) => props.isConnected ? props.theme.colors.primary : props.theme.colors.secondary};
     border-radius: 10px;
     cursor: pointer;
     font-family: "Roboto", sans-serif;

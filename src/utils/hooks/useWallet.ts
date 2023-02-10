@@ -28,6 +28,13 @@ const useWallet = () => {
         }
     };
 
+    const disconnect = () => {
+        disconnectWallet();
+        setIsWalletConnected(false);
+        setCurrentWalletAddress(undefined);
+        setCurrentUserBalance(undefined);
+    }
+
     useEffect(() => {
         isConnected().then((res: boolean) => {
             res && initWallet();
@@ -37,7 +44,7 @@ const useWallet = () => {
     return {
         currentUserBalance,
         currentWalletAddress,
-        disconnectWallet,
+        disconnect,
         initWallet,
         isWalletConnected,
     };

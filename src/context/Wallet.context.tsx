@@ -4,7 +4,7 @@ import useWallet from "../utils/hooks/useWallet";
 type WalletContextProps = {
   currentUserBalance: number | undefined;
   currentWalletAddress: string | undefined;
-  disconnectWallet: () => void;
+  disconnect: () => void;
   initWallet: () => void;
   isWalletConnected: boolean;
 };
@@ -19,7 +19,7 @@ const WalletProvider = ({ children }: WalletProviderProps) => {
   const {
     currentUserBalance,
     currentWalletAddress,
-    disconnectWallet,
+    disconnect,
     isWalletConnected,
     initWallet,
   } = useWallet();
@@ -29,7 +29,7 @@ const WalletProvider = ({ children }: WalletProviderProps) => {
       value={{
         currentUserBalance,
         currentWalletAddress,
-        disconnectWallet,
+        disconnect,
         initWallet,
         isWalletConnected,
       }}

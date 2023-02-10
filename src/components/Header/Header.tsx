@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { WalletContext } from '../../context/Wallet.context'
+import { getFormattedWalletAddress } from '../../utils/helpers/Wallet.helpers';
 import {
     AppTitle,
     ConnectButton,
@@ -8,12 +10,30 @@ import {
 } from './Header.styled'
 
 const Header = () => {
+  const { 
+    currentUserBalance,
+    currentWalletAddress,
+    disconnect,
+    initWallet,
+    isWalletConnected,
+  } = useContext(WalletContext);
+
   return (
     <HeaderWrapper>
         <AppTitle>TicTacToe</AppTitle>
         <WalletInfo>
-            <WalletBalanceLabel>Balance: 1.2 xtz</WalletBalanceLabel>
-            <ConnectButton>Connect Wallet</ConnectButton>
+            {isWalletConnected && (
+              <WalletBalanceLabel>{`Balance: ${currentUserBalance?.toFixed(2) || "--"} xtz`}</WalletBalanceLabel>
+            )}
+            <ConnectButton
+              isConnected={isWalletConnected}
+              onClick={isWalletConnected ? disconnect : initWallet}
+            >
+                {isWalletConnected ? 
+                  getFormattedWalletAddress(currentWalletAddress || "") : 
+                  "Connect Wallet"
+                }
+            </ConnectButton>
         </WalletInfo>
     </HeaderWrapper>
   )
