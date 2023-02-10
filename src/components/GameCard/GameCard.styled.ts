@@ -25,3 +25,19 @@ export const GameStatusLabel = styled.div<{
     font-weight: bold;
     color: ${(props) => props.color || "black"};
 `;
+
+export const JoinGameButton = styled.button`
+    padding: 0.5rem 1rem;
+    border: none;
+    background: ${(props) => props.theme.colors.systemYellow};
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+
+    &:hover {
+        opacity: 0.8;
+    }
+`;

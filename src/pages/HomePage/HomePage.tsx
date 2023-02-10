@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 import { main } from '../../app/styles/theme.styled'
 import { build_board } from '../../utils/taquito/transactions.taquito'
@@ -11,12 +11,19 @@ import {
 import Statistics from './Statistics/Statistics'
 
 const HomePage = () => {
+  const [gamesView, setGamesView] = useState<1 | 2>(1);
+
   return (
     <HomePageWrapper>
       <Statistics />
       <ButtonsWrapper>
-        <ActionButton backgroundColor={main.colors.primary}>My Games</ActionButton>
-        <ActionButton>Available Games</ActionButton>
+        <ActionButton
+          backgroundColor={main.colors.primary}
+          onClick={() => setGamesView(1)}
+        >
+          My Games
+        </ActionButton>
+        <ActionButton onClick={() => setGamesView(2)}>Available Games</ActionButton>
         <ActionButton
           backgroundColor={main.colors.secondary}
           onClick={() => 
@@ -33,7 +40,7 @@ const HomePage = () => {
           New Game
         </ActionButton>
       </ButtonsWrapper>
-      <Games />
+      <Games gamesView={gamesView} />
     </HomePageWrapper>
   )
 }
