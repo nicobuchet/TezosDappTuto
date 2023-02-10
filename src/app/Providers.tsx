@@ -1,5 +1,6 @@
 import React, { FC, ReactNode } from 'react'
 import { ThemeProvider } from 'styled-components'
+import WalletProvider from '../context/Wallet.context'
 import { main } from './styles/theme.styled'
 
 type ProvidersProps = {
@@ -8,7 +9,11 @@ type ProvidersProps = {
 
 const Providers: FC<ProvidersProps> = ({ children }) => {
   return (
-    <ThemeProvider theme={main}>{children}</ThemeProvider>
+    <ThemeProvider theme={main}>
+      <WalletProvider>
+        {children}
+      </WalletProvider>
+    </ThemeProvider>
   )
 }
 

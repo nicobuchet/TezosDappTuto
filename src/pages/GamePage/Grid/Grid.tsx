@@ -6,10 +6,12 @@ const Grid = () => {
     <GridWrapper>
         <MovesLabel>Moves: 2</MovesLabel>
         <div>
-            {[...Array(3)].map((i: number) => {
+            {[...Array(3)].map((i: number, key: number) => {
                 return (
-                    <Row key={i}>
-                        {[...Array(3)].map((j: number) => <Cell key={j} />)}
+                    <Row key={key}>
+                        {[...Array(3)].map((j: number, key: number) => (
+                            <Cell key={key} />
+                        ))}
                     </Row>
                 )
             })}
